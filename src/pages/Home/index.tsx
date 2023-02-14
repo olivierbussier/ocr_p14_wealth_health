@@ -17,15 +17,15 @@ import { states } from "../../states";
 import "./style.scss";
 
 interface IEmployee {
-  firstName: string,
-  lastName: string,
-  dateOfBirth: string,
-  startDate: string,
-  department: string,
-  street: string,
-  city: string,
-  state: string,
-  zipCode: string
+  firstName: string;
+  lastName: string;
+  dateOfBirth: string;
+  startDate: string;
+  department: string;
+  street: string;
+  city: string;
+  state: string;
+  zipCode: string;
 }
 
 type mops = {
@@ -39,43 +39,45 @@ const Title: React.FC<mops> = ({ children }) => {
   );
 };
 
-
 const SubTitle: React.FC<mops> = ({ children }) => {
   return <h2>{children}</h2>;
 };
 export const Home = () => {
-
-  const [modalIsOpen, setModalIsOpen] = useState(false)
-  const dispatch = useDispatch()
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+    event.preventDefault();
 
     const form = event.currentTarget;
     const formData = new FormData(form);
     const formJson = Object.fromEntries(formData.entries());
 
     // const employees = JSON.parse(localStorage.getItem('employees')) || [];
-    dispatch(addEmployee({
-      firstName: formJson['first-name'],
-      lastName: formJson['last-name'],
-      dateOfBirth: formJson['date-of-birth'],
-      startDate: formJson['start-date'],
-      department: formJson['department'],
-      street: formJson['street'],
-      city: formJson['city'],
-      state: formJson['state'],
-      zipCode: formJson['zip-code']
-    }))
-    setModalIsOpen(true)
-  }
+    dispatch(
+      addEmployee({
+        firstName: formJson["first-name"],
+        lastName: formJson["last-name"],
+        dateOfBirth: formJson["date-of-birth"],
+        startDate: formJson["start-date"],
+        department: formJson["department"],
+        street: formJson["street"],
+        city: formJson["city"],
+        state: formJson["state"],
+        zipCode: formJson["zip-code"],
+      })
+    );
+    setModalIsOpen(true);
+  };
 
   return (
     <>
       <Title>HRNet</Title>
       <Container>
-        <Link to="/employee-list">View Current Employees</Link>
-        <SubTitle>Create Employee</SubTitle>
+        <header className="center">
+          <Link to="/employee-list">View Current Employees</Link>
+          <SubTitle>Create Employee</SubTitle>
+        </header>
         <Form onSubmit={handleSubmit}>
           <InputText name="first-name" text="First Name" />
           <InputText name="last-name" text="Last Name" />
@@ -87,19 +89,25 @@ export const Home = () => {
             <InputSelect name="state" text="State" items={states} />
             <InputNumber name="zip-code" text="Zip Code" />
           </FieldSet>
-          <InputSelect name="department" text="Department" items={
-          [
-            {name: 'Sales', abbreviation: 'Sales'},
-            {name: 'Marketing', abbreviation: 'Marketing'},
-            {name: 'Engineering', abbreviation: 'Engineering'},
-            {name: 'Human Resources', abbreviation: 'Human Resources'},
-            {name: 'Legal', abbreviation: 'Legal'},
-          ]
-          } />
-          <Button text="Save"/>
+          <InputSelect
+            name="department"
+            text="Department"
+            items={[
+              { name: "Sales", abbreviation: "Sales" },
+              { name: "Marketing", abbreviation: "Marketing" },
+              { name: "Engineering", abbreviation: "Engineering" },
+              { name: "Human Resources", abbreviation: "Human Resources" },
+              { name: "Legal", abbreviation: "Legal" },
+            ]}
+          />
+          <Button text="Save" />
         </Form>
       </Container>
-      <Modal isOpen={modalIsOpen} message="Employee Created!" onClose={() => setModalIsOpen(false)}/>
+      <Modal
+        isOpen={modalIsOpen}
+        message="Employee Created!"
+        onClose={() => setModalIsOpen(false)}
+      />
     </>
   );
 };

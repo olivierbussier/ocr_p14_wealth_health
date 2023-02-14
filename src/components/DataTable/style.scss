@@ -5,10 +5,22 @@
     border-spacing: 0;
     box-sizing: content-box;
     border-bottom: 1px solid #111;
+    width: 100%;
 }
 
 .sorting {
     background-image: url('../../../public/sort_both.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+.ascending {
+    background-image: url('../../../public/sort_asc.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+.descending {
+    background-image: url('../../../public/sort_desc.png');
     background-repeat: no-repeat;
     background-position: center right;
 }
@@ -17,12 +29,13 @@ thead tr th {
     padding: 5px 18px;
     border-bottom: 1px solid #111;
     background: #fff;
-    width: 77px;
+    // width: 77px;
 }
 
-tr {
+tbody tr {
     background: white;
     &:nth-child(2n+1) {
         background-color: #f0f0f0;
     }
+    height: 3rem;
 }

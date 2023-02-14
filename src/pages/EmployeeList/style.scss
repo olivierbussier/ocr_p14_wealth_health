@@ -1,29 +1,29 @@
-
-
 .head-data-table {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
-    justify-content: space-around;
-    align-items: center;
 }
 
 .nb-entries {
     display: flex;
-    flex-direction: row;
-    height: 100%;
+    align-items: center;
+    gap: 5px;
 }
 
 .search {
     display: flex;
     align-items: center;
-    flex-direction: row;
-    input {
-        height: 1rem;
-    }
+    gap: 5px;
 }
 
-label {
-    margin: 0;
-    padding: 0;
+.link-button {
+    height: 100%;
+    border: 1px lightgray solid;
+    padding: 0.25em;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1em;
+    &:hover {
+        background-color: #ddd;
+    }
 }

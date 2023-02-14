@@ -1,12 +1,49 @@
 import "./style.scss";
-
-type props = {
+/**
+<nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+ */
+type propsButton = {
+  id?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
+  active?: boolean,
+  role?: string;
+  children: React.ReactNode;
+  className: string
+};
+const Button: React.FC<propsButton> = ({
+  id,
+  onClick,
+  disabled=false,
+  active,
+  children,
+  className
+}) => {
+  return (
+      <button className={className+(active?" active":'')} id={id} disabled={disabled} onClick={onClick}>{children}</button>
+  );
+};
+type propsPagination = {
   nbItems: number;
   nbPerPage: number;
   curPage: number;
   onPageChange: CallableFunction;
 };
-export const Pagination: React.FC<props> = ({
+export const Pagination: React.FC<propsPagination> = ({
   nbItems,
   nbPerPage,
   curPage,
@@ -15,22 +52,17 @@ export const Pagination: React.FC<props> = ({
   let res = [];
   const nbPages = Math.ceil(nbItems / nbPerPage);
 
-  if (curPage !== 0)
-    res.push(<button key='btn-page-key-left' onClick={() => onPageChange(0)}>{"<<"}</button>);
-  else
-    res.push(<button key='btn-page-key-left' disabled>{"<<"}</button>);
+  res.push(<Button className="left-btn" key="btn-page-key-left" disabled={curPage === 0} onClick={() => onPageChange(curPage - 1)}>{"<<"}</Button>);
 
   for (let i = 0; i < nbPages; i++) {
-    if (i === curPage) {
-      res.push(<button key={'btn-page-key-'+i} disabled>{i}</button>);
-    } else res.push(<button key={'btn-page-key-'+i} onClick={() => onPageChange(i)}>{i}</button>);
+    res.push(<Button className="middle-btn" key={"btn-page-key-" + i} active={i === curPage} onClick={() => onPageChange(i)}>{i}</Button>);
   }
 
-  if (curPage !== nbPages - 1)
-    res.push(<button key='btn-page-key-right' onClick={() => onPageChange(nbPages-1)}>{">>"}</button>);
-  else
-    res.push(<button key='btn-page-key-right' disabled>{">>"}</button>);
+  res.push(<Button className="right-btn" key="btn-page-key-right" disabled={nbPages === 0 || curPage === nbPages - 1} onClick={() => onPageChange(curPage + 1)}>{">>"}</Button>);
 
-    console.log('nbItems=', nbItems, ', nbPages=', nbPages, ', curPage=', curPage, ',   nbPerPage=', nbPerPage)
-  return <div>{res}</div>;
+  return (
+    <div className="app-pagination">
+      {res}
+    </div>
+  );
 };
