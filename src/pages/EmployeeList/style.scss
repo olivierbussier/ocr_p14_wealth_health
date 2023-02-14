@@ -1,0 +1,29 @@
+
+
+.head-data-table {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nb-entries {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    input {
+        height: 1rem;
+    }
+}
+
+label {
+    margin: 0;
+    padding: 0;
+}
