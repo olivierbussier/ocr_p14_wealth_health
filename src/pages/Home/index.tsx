@@ -75,7 +75,7 @@ export const Home = () => {
       <Title>HRNet</Title>
       <Container>
         <header className="center">
-          <Link to="/employee-list">View Current Employees</Link>
+          <Link className="link-button" to="/employee-list">View Current Employees</Link>
           <SubTitle>Create Employee</SubTitle>
         </header>
         <Form onSubmit={handleSubmit}>

@@ -10,7 +10,7 @@ export const InputText: React.FC<props> = ({ name, text, onChange }) => {
   return (
     <>
       <label htmlFor={name}>{text}</label>
-      <input type="text" id={name} name={name} onChange={onChange}/>
+      <input className="item-input-text" type="text" id={name} name={name} onChange={onChange}/>
     </>
   );
 };
