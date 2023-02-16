@@ -1,13 +1,16 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import { App } from "./App";
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 import test from "node:test";
+import { Provider } from "react-redux";
+import { store } from "./Services/Redux/Store";
 
 test("renders learn react link", () => {
   render(
     <BrowserRouter>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   );
   const linkElement = screen.getByText(/HRnet/i);

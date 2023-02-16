@@ -1,10 +1,11 @@
 import "./style.scss"
 
-type props = {
-    name: string,
-    text: React.ReactNode
-}
-export const InputDate: React.FC<props> = ({ name, text }) => {
+/**
+ *
+ * @param param0
+ * @returns
+ */
+export const InputDate = ({ name, text }) => {
   return (
     <>
       <label htmlFor={name}>{text}</label>

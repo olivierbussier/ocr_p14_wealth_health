@@ -3,23 +3,12 @@ import { useSelector } from "react-redux";
 
 import "./style.scss";
 import { DataTable } from "../../components/DataTable";
-import { Link, NavLink } from "react-router-dom";
-import { SetStateAction, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { InputText } from "../../components/Form/InputText";
 import { InputSelect } from "../../components/Form/InputSelect";
 import { Pagination } from "../../components/Pagination";
 
-interface IformatCols {
-  firstName: string;
-  lastName: string;
-  startDate: string;
-  department: string;
-  dateOfBirth: string;
-  street: string;
-  city: string;
-  state: string;
-  zipCode: string;
-}
 const formatCols = [
   { title: "First Name", data: "firstName" },
   { title: "Last Name", data: "lastName" },
@@ -32,31 +21,41 @@ const formatCols = [
   { title: "Zip Code", data: "zipCode" },
 ];
 
+/**
+ * This page is used to display table of all current employees
+ *
+ * @returns
+ */
 export const EmployeeList = () => {
-  const data = useSelector((state:{[x: string]: any}) => state.data);
+  const data = useSelector((state) => state.data);
 
   const [nbPerPage, setNbPerPage] = useState(10);
   const [curPage, setCurPage] = useState(0);
   const [search, setSearch] = useState("");
   const [findData, setFindData] = useState(data);
 
-  const onSearchChange = (e: { target: { value: SetStateAction<string>; }; }) => {
+  // When the search field is updated
+  const onSearchChange = (e) => {
     setSearch(e.target.value);
   };
 
-  const onNbItemsChange = (event: { target: { value: string; }; }) => {
+  // When the number of items per page change
+  const onNbItemsChange = (event) => {
     setNbPerPage(parseInt(event.target.value));
   };
 
-  const onPageChange = (page: SetStateAction<number>) => {
+  // When the page number change
+  const onPageChange = (page) => {
     setCurPage(page);
   };
 
+  // In order to apply all changes (search or page or number of items per page)
+  // We use a hook with all dependencies
   useEffect(() => {
-    const isIncluded = (str: string, subStr: string) => str.indexOf(subStr) !== -1;
+    const isIncluded = (str, subStr) => str.indexOf(subStr) !== -1;
     // Calc of items to display function to search text
 
-    const newData = data.filter((element: { [x: string]: any; }) =>
+    const newData = data.filter((element) =>
       formatCols.reduce(
         (accu, currentElem) =>
           (accu = accu || isIncluded(element[currentElem.data], search)),
@@ -71,7 +70,6 @@ export const EmployeeList = () => {
     }
   }, [nbPerPage, curPage, search, data]);
 
-
   return (
     <Container>
       <h1>Current Employees</h1>
@@ -81,10 +79,10 @@ export const EmployeeList = () => {
             name="nb-per-page"
             text="Show"
             items={[
-              { name: "10", abbreviation: '10' },
-              { name: "25", abbreviation: '25' },
-              { name: "50", abbreviation: '50' },
-              { name: "100", abbreviation: '100' },
+              { name: "10", value: "10" },
+              { name: "25", value: "25" },
+              { name: "50", value: "50" },
+              { name: "100", value: "100" },
             ]}
             onChange={onNbItemsChange}
           />
@@ -112,7 +110,9 @@ export const EmployeeList = () => {
         curPage={curPage}
         onPageChange={onPageChange}
       />
-      <Link className="link-button" to="/">Back to Home</Link>
+      <Link className="link-button" to="/">
+        Back to Home
+      </Link>
     </Container>
   );
 };

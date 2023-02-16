@@ -1,37 +1,28 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux/es/exports";
 import { Link } from "react-router-dom";
+
 import { Container } from "../../components/Container";
-import { Form } from "../../components/Form";
+import { FieldSet, Form } from "../../components/Form";
 import { Button } from "../../components/Form/Button";
-import { FieldSet } from "../../components/Form/FieldSet";
 import { InputDate } from "../../components/Form/InputDate";
 import { InputNumber } from "../../components/Form/InputNumber";
 import { InputSelect } from "../../components/Form/InputSelect";
 import { InputText } from "../../components/Form/InputText";
 import { Modal } from "../../components/Modal";
+
 import { addEmployee } from "../../Services/Redux/Slices/dataSlice";
 
 import { states } from "../../states";
 
 import "./style.scss";
 
-interface IEmployee {
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
-  startDate: string;
-  department: string;
-  street: string;
-  city: string;
-  state: string;
-  zipCode: string;
-}
-
-type mops = {
-  children: React.ReactNode;
-};
-const Title: React.FC<mops> = ({ children }) => {
+/**
+ *
+ * @param param0
+ * @returns
+ */
+const Title = ({ children }) => {
   return (
     <div className="title">
       <h1>{children}</h1>
@@ -39,14 +30,24 @@ const Title: React.FC<mops> = ({ children }) => {
   );
 };
 
-const SubTitle: React.FC<mops> = ({ children }) => {
+/**
+ *
+ * @param param0
+ * @returns
+ */
+const SubTitle = ({ children }) => {
   return <h2>{children}</h2>;
 };
+
+/**
+ *
+ * @returns
+ */
 export const Home = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     const form = event.currentTarget;
@@ -93,11 +94,11 @@ export const Home = () => {
             name="department"
             text="Department"
             items={[
-              { name: "Sales", abbreviation: "Sales" },
-              { name: "Marketing", abbreviation: "Marketing" },
-              { name: "Engineering", abbreviation: "Engineering" },
-              { name: "Human Resources", abbreviation: "Human Resources" },
-              { name: "Legal", abbreviation: "Legal" },
+              { name: "Sales", value: "Sales" },
+              { name: "Marketing", value: "Marketing" },
+              { name: "Engineering", value: "Engineering" },
+              { name: "Human Resources", value: "Human Resources" },
+              { name: "Legal", value: "Legal" },
             ]}
           />
           <Button text="Save" />

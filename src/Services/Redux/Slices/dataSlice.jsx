@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { faker } from '@faker-js/faker';
 
 import {data} from './data.jsx'
 
-const setInitialData = (nbItems: number) => {
+const setInitialData = (nbItems) => {
 
   let initialData = data
   // for (let i=0; i < nbItems; i++) {

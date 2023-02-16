@@ -1,6 +1,6 @@
 import "./style.scss";
 
-export const InputNumber = ({name,text}: {name: string; text: React.ReactNode}) => {
+export const InputNumber = ({name,text}) => {
   return (
     <>
       <label htmlFor={name}>{text}</label>

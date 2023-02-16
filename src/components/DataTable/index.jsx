@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import "./style.scss";
 
-type p = {
-  formatCols: { title: string; data: string }[];
-  data: any[];
-  curPage: number;
-  nbPerPage: number;
-};
-export const DataTable: React.FC<p> = ({
+export const DataTable = ({
   formatCols,
   data,
   curPage,
@@ -38,7 +32,7 @@ export const DataTable: React.FC<p> = ({
     );
   }, [sortColumn, sortOrder, data]);
 
-  const changeSortOrder = (e: React.MouseEvent<HTMLTableHeaderCellElement>) => {
+  const changeSortOrder = (e) => {
     const a = e.currentTarget.attributes.getNamedItem("data-name");
     if (a) {
       if (a.value === sortColumn) {

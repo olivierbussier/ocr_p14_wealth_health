@@ -1,12 +1,7 @@
 
 import "./style.scss"
 
-type props = {
-  name: string;
-  text: React.ReactNode;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>
-};
-export const InputText: React.FC<props> = ({ name, text, onChange }) => {
+export const InputText = ({ name, text, onChange }) => {
   return (
     <>
       <label htmlFor={name}>{text}</label>

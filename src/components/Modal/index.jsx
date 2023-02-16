@@ -1,14 +1,8 @@
-import { Link } from "react-router-dom";
 import "./style.scss";
 
-type props = {
-  isOpen: boolean;
-  message: string;
-  onClose: Function;
-};
-export const Modal: React.FC<props> = ({ isOpen, message, onClose }) => {
+export const Modal = ({ isOpen, message, onClose }) => {
 
-  const closeModal: React.MouseEventHandler<HTMLDivElement>  = (e) => {
+  const closeModal = (e) => {
     onClose(e)
   }
   return isOpen ? (
