@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux/es/exports";
 import { Link } from "react-router-dom";
 
-import { Container } from "../../components/Container";
+import { Card, Container } from "../../components/Container";
 import { FieldSet, Form } from "../../components/Form";
 import { Button } from "../../components/Form/Button";
 import { InputDate } from "../../components/Form/InputDate";
@@ -73,36 +73,44 @@ export const Home = () => {
 
   return (
     <>
-      <Title>HRNet</Title>
       <Container>
-        <header className="center">
-          <Link className="link-button" to="/employee-list">View Current Employees</Link>
-          <SubTitle>Create Employee</SubTitle>
-        </header>
-        <Form onSubmit={handleSubmit}>
-          <InputText name="first-name" text="First Name" />
-          <InputText name="last-name" text="Last Name" />
-          <InputDate name="date-of-birth" text="Date of Birth" />
-          <InputDate name="start-date" text="Start Date" />
-          <FieldSet legend="Address">
-            <InputText name="street" text="Street" />
-            <InputText name="city" text="City" />
-            <InputSelect name="state" text="State" items={states} />
-            <InputNumber name="zip-code" text="Zip Code" />
-          </FieldSet>
-          <InputSelect
-            name="department"
-            text="Department"
-            items={[
-              { name: "Sales", value: "Sales" },
-              { name: "Marketing", value: "Marketing" },
-              { name: "Engineering", value: "Engineering" },
-              { name: "Human Resources", value: "Human Resources" },
-              { name: "Legal", value: "Legal" },
-            ]}
-          />
-          <Button text="Save" />
-        </Form>
+        <Card>
+          <Title>HRNet</Title>
+          <header className="center">
+            <Link className="link-button" to="/employee-list">
+              View Current Employees
+            </Link>
+            <SubTitle>Create Employee</SubTitle>
+          </header>
+          <Form onSubmit={handleSubmit}>
+            <InputText name="first-name" text="First Name" />
+            <InputText name="last-name" text="Last Name" />
+            <InputDate
+              name="date-of-birth"
+              text="Date of Birth"
+              value="2022-02-02"
+            />
+            <InputDate name="start-date" text="Start Date" value="2021-01-01" />
+            <FieldSet legend="Address">
+              <InputText name="street" text="Street" />
+              <InputText name="city" text="City" />
+              <InputSelect name="state" text="State" items={states} />
+              <InputNumber name="zip-code" text="Zip Code" />
+            </FieldSet>
+            <InputSelect
+              name="department"
+              text="Department"
+              items={[
+                { name: "Sales", value: "Sales" },
+                { name: "Marketing", value: "Marketing" },
+                { name: "Engineering", value: "Engineering" },
+                { name: "Human Resources", value: "Human Resources" },
+                { name: "Legal", value: "Legal" },
+              ]}
+            />
+            <Button text="Save" />
+          </Form>
+        </Card>
       </Container>
       <Modal
         isOpen={modalIsOpen}

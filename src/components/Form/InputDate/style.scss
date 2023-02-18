@@ -1,5 +1,85 @@
-.item-input-date {
+.date-time-picker {
+  position: relative;
+  input[type="date"] {
+    margin: 0;
+    width: 100%;
+    height: 2.5em;
+    border-radius: 5px;
+    border: 1px solid lightgray
+
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+      display: none;
+  }
+  .item-input-date {
     display: block;
     width: 100%;
     height: 2.5em;
+  }
+
+  .calendar {
+    // position: absolute;
+    top:2.5em; left:0; right: 0;
+    background-color: #fff;
+    border: 1px solid rgb(118, 118, 118);
+    transition: height 1s;
+    height: auto;
+    // margin: 20px auto;
+    &.hide {
+        transition: height 1s;
+        height: 0;
+      overflow: hidden;
+      border:none
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    h2 {
+      padding: 0;
+      margin: 0;
+    }
+    // padding: 10px;
+  }
+
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 5px;
+    padding: 10px;
+  }
+
+  .day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  .day-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+
+  .current-month {
+    background-color: #fff;
+  }
+
+  .other-month {
+    background-color: #f0f0f0;
+    color: #bbb;
+  }
+
+  .selected {
+    background-color: #aaf;
+  }
 }

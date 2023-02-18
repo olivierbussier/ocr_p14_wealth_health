@@ -1,8 +1,11 @@
+form {
+
 .address {
     margin: 10px 0;
     padding: 1em 3em;
 }
 
-form input {
+input, .date-time-picker {
     margin-bottom: 1em;
+}
 }
