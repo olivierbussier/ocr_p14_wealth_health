@@ -63,7 +63,7 @@ export const Calendar = ({ className, onDateChange, onBlur, value, changeState})
   }
 
   return (
-    <div className={className} tabIndex={0} onBlur={onBlur}
+    <div className={className} tabIndex={1} onBlur={onBlur}
       // onFocus={()=> console.log("Calendar div - focus")}
       >
       <div className="header">

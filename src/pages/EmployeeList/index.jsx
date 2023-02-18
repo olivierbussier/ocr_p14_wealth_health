@@ -1,4 +1,4 @@
-import { Container } from "../../components/Container";
+import { Card, Container } from "../../components/Container";
 import { useSelector } from "react-redux";
 
 import "./style.scss";
@@ -72,47 +72,49 @@ export const EmployeeList = () => {
 
   return (
     <Container>
-      <h1>Current Employees</h1>
-      <div className="head-data-table">
-        <div className="nb-entries">
-          <InputSelect
-            name="nb-per-page"
-            text="Show"
-            items={[
-              { name: "10", value: "10" },
-              { name: "25", value: "25" },
-              { name: "50", value: "50" },
-              { name: "100", value: "100" },
-            ]}
-            onChange={onNbItemsChange}
-          />
+      <Card max={1024}>
+        <h1>Current Employees</h1>
+        <div className="head-data-table">
+          <div className="nb-entries">
+            <InputSelect
+              name="nb-per-page"
+              text="Show"
+              items={[
+                { name: "10", value: "10" },
+                { name: "25", value: "25" },
+                { name: "50", value: "50" },
+                { name: "100", value: "100" },
+              ]}
+              onChange={onNbItemsChange}
+            />
 
-          <div>entries</div>
-        </div>
+            <div>entries</div>
+          </div>
 
-        <div className="search">
-          <InputText
-            name="input-search"
-            text="Search"
-            onChange={onSearchChange}
-          />
+          <div className="search">
+            <InputText
+              name="input-search"
+              text="Search"
+              onChange={onSearchChange}
+            />
+          </div>
         </div>
-      </div>
-      <DataTable
-        formatCols={formatCols}
-        data={findData}
-        curPage={curPage}
-        nbPerPage={nbPerPage}
-      />
-      <Pagination
-        nbItems={findData.length}
-        nbPerPage={nbPerPage}
-        curPage={curPage}
-        onPageChange={onPageChange}
-      />
-      <Link className="link-button" to="/">
-        Back to Home
-      </Link>
+        <DataTable
+          formatCols={formatCols}
+          data={findData}
+          curPage={curPage}
+          nbPerPage={nbPerPage}
+        />
+        <Pagination
+          nbItems={findData.length}
+          nbPerPage={nbPerPage}
+          curPage={curPage}
+          onPageChange={onPageChange}
+        />
+        <Link className="link-button" to="/">
+          Back to Home
+        </Link>
+      </Card>
     </Container>
   );
 };

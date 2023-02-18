@@ -1,15 +1,14 @@
 import "./style.scss";
 
-export const Modal = ({ isOpen, message, onClose }) => {
+export const Modal = ({ isOpen, message, title, onClose }) => {
+  const closeModalKey = 27;
 
-  const closeModal = (e) => {
-    onClose(e)
-  }
   return isOpen ? (
     <div className="blocker-modal">
-      <div className="modal">
+      <div className="card modal">
+        <div className="header">{title}</div>
         {message}
-        <div onClick={closeModal} className="close-modal">Close</div>
+        <div onClick={onClose} className="close-modal">Close</div>
       </div>
     </div>
   ) : (

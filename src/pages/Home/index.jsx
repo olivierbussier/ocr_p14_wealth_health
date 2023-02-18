@@ -74,12 +74,18 @@ export const Home = () => {
   return (
     <>
       <Container>
+        <Modal
+          isOpen={modalIsOpen}
+          title="Employee Creation"
+          message="Employee Created with success!"
+          onClose={() => setModalIsOpen(false)}
+        />
         <Card>
-          <Title>HRNet</Title>
           <header className="center">
             <Link className="link-button" to="/employee-list">
               View Current Employees
             </Link>
+            <Title>HRNet</Title>
             <SubTitle>Create Employee</SubTitle>
           </header>
           <Form onSubmit={handleSubmit}>
@@ -112,11 +118,6 @@ export const Home = () => {
           </Form>
         </Card>
       </Container>
-      <Modal
-        isOpen={modalIsOpen}
-        message="Employee Created!"
-        onClose={() => setModalIsOpen(false)}
-      />
     </>
   );
 };

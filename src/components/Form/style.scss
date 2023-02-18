@@ -1,11 +1,13 @@
 form {
-
-.address {
+  .address {
     margin: 10px 0;
-    padding: 1em 3em;
-}
+    padding: 1em 2em;
+    border: 1px grey solid;
+    border-radius: 10px;
+  }
 
-input, .date-time-picker {
+  input,
+  .date-time-picker {
     margin-bottom: 1em;
-}
+  }
 }
