@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 import "./style.scss";
 
-export const Calendar = ({ className, onDateChange, onBlur, value, changeState}) => {
+export const Calendar = ({ className, onDateChange, onBlur, value, style, changeState}) => {
   const selectedDate = new Date(value)
   const year = selectedDate.getFullYear();
   const month = selectedDate.getMonth();
@@ -13,8 +13,6 @@ export const Calendar = ({ className, onDateChange, onBlur, value, changeState})
     const date = new Date(selectedDate);
     date.setMonth(date.getMonth() - 1);
     onDateChange(formatDate(date))
-    // console.log("calendar - prev")
-
   }
 
   // Fonction pour naviguer au mois suivant
@@ -23,8 +21,6 @@ export const Calendar = ({ className, onDateChange, onBlur, value, changeState})
     const date = new Date(selectedDate);
     date.setMonth(date.getMonth() + 1);
     onDateChange(formatDate(date))
-    // console.log("calendar - next")
-
   }
 
   // Fonction pour générer les jours du mois
@@ -47,7 +43,6 @@ export const Calendar = ({ className, onDateChange, onBlur, value, changeState})
           onMouseDown={() => {
             changeState(false)
             onDateChange(formatDate(date));
-            // console.log("calendar - mousemove")
           }}
         >
           {day}
@@ -63,9 +58,7 @@ export const Calendar = ({ className, onDateChange, onBlur, value, changeState})
   }
 
   return (
-    <div className={className} tabIndex={1} onBlur={onBlur}
-      // onFocus={()=> console.log("Calendar div - focus")}
-      >
+    <div className={className} style={style} tabIndex={0} onBlur={onBlur}>
       <div className="header">
         <button onClick={prevMonth}>{"<"}</button>
         <h2>
@@ -132,29 +125,19 @@ export const InputDate = ({ name, text, value }) => {
         value={currentDate}
         onChange={(e) => {
           setCurrentDate(e.target.value);
-          // console.log("InputDate input - change")
-
         }}
         onClick={(e) => {
           setCalendarSelect(!calendarSelect);
-          // console.log("InputDate input - click")
-        }}
-        onBlur={(e) => {
-          // console.log("InputDate input - blur")
-          //setCalendarSelect(false)
         }}
         />
       <Calendar
         value={currentDate}
-        className={"calendar" + (calendarSelect ? "" : " hide")}
+        className={"calendar" + (calendarSelect ? " show" : "")}
         changeState={(state) => setCalendarSelect(state)}
         onDateChange={(date) => {
-          // setCalendarSelect(false);
-          // console.log("InputDate Calendar - datechange")
           setCurrentDate(date);
         }}
         onBlur={() => {
-          // console.log("InputDate Calendar - blur")
           setCalendarSelect(false);
         }}
       />

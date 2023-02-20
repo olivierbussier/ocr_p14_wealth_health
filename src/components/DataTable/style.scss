@@ -6,36 +6,69 @@
     box-sizing: content-box;
     border-bottom: 1px solid #111;
     width: 100%;
-}
-
-.sorting {
-    background-image: url('../../../public/sort_both.png');
-    background-repeat: no-repeat;
-    background-position: center right;
-}
-.ascending {
-    background-image: url('../../../public/sort_asc.png');
-    background-repeat: no-repeat;
-    background-position: center right;
-}
-
-.descending {
-    background-image: url('../../../public/sort_desc.png');
-    background-repeat: no-repeat;
-    background-position: center right;
-}
-
-thead tr th {
-    padding: 5px 18px;
-    border-bottom: 1px solid #111;
-    background: #fff;
-    // width: 77px;
-}
-
-tbody tr {
-    background: white;
-    &:nth-child(2n+1) {
-        background-color: #f0f0f0;
+    thead tr th {
+        position: relative;
+        padding: 5px 18px;
+        border-bottom: 1px solid #111;
+        background: #fff;
+        background-image: url('../../../public/sort_both.png');
+        background-repeat: no-repeat;
+        background-position: center right;
+        &.asc {
+            background-image: url('../../../public/sort_asc.png');
+            background-repeat: no-repeat;
+            background-position: center right;
+        }
+        &.desc {
+            background-image: url('../../../public/sort_desc.png');
+            background-repeat: no-repeat;
+            background-position: center right;
+        }
+        &.sort-col-0 {
+            &:after {
+                position: absolute;
+                content: '1';
+                font-size: 10px;
+                bottom:3px;
+                right: 7px
+            }
+        }
+        &.sort-col-1 {
+            &:after {
+                position: absolute;
+                content: '2';
+                font-size: 10px;
+                bottom:3px;
+                right: 5px
+            }
+        }
+        &.sort-col-2 {
+            &:after {
+                position: absolute;
+                content: '3';
+                font-size: 10px;
+                bottom: 3px;
+                right: 5px
+            }
+        }
+        // width: 77px;
     }
-    height: 3rem;
+    tbody tr {
+        background: white;
+        &:nth-child(2n+1) {
+            background-color: #f0f0f0;
+        }
+        height: 3rem;
+    }
+    tr:nth-child(2n+1) {
+        .sort-col-0, .sort-col-1, .sort-col-2 {
+            background-color: #e8e8e8;
+        }
+    }
+    tr:nth-child(2n+2) {
+        .sort-col-0, .sort-col-1, .sort-col-2 {
+            background-color: #fafafa;
+        }
+    }
+
 }

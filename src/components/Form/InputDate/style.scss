@@ -23,15 +23,19 @@
     right: 0;
     background-color: #fff;
     border: 1px solid rgb(118, 118, 118);
-    transition: height 1s;
-    height: auto;
+    transition: transform 0.25s ;
+    // transition-delay: 1s;
+    transform-origin: top;
+    transform: scaleY(0);
+    // opacity: 0;
     z-index: 1;
-    // margin: 20px auto;
-    &.hide {
-      transition: height 1s;
-      height: 0;
-      overflow: hidden;
-      border: none;
+    overflow: hidden;
+    border: none;
+    &.show {
+      // transition-delay: 0s;
+      height: auto;
+      // opacity: 1;
+      transform:scaleY(1)
     }
   }
 
