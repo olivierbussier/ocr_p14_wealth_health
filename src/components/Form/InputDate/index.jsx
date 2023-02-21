@@ -100,6 +100,7 @@ const formatDate = (d) => {
 
   return year + "-" + month + "-" + day;
 };
+
 /**
  *
  * @param {*} param0

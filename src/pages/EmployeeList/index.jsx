@@ -10,15 +10,15 @@ import { InputSelect } from "../../components/Form/InputSelect";
 import { Pagination } from "../../components/Pagination";
 
 const formatCols = [
-  { title: "First Name"   , data: "firstName" },
-  { title: "Last Name"    , data: "lastName" },
-  { title: "Start Date"   , data: "startDate" },
-  { title: "Department"   , data: "department" },
-  { title: "Date of Birth", data: "dateOfBirth" },
-  { title: "Street"       , data: "street" },
-  { title: "City"         , data: "city" },
-  { title: "State"        , data: "state" },
-  { title: "Zip Code"     , data: "zipCode" },
+  { title: "First Name"   , type: 'string', data: "firstName" },
+  { title: "Last Name"    , type: 'string', data: "lastName" },
+  { title: "Start Date"   , type: 'date'  , data: "startDate" },
+  { title: "Department"   , type: 'string', data: "department" },
+  { title: "Date of Birth", type: 'date'  , data: "dateOfBirth" },
+  { title: "Street"       , type: 'string', data: "street" },
+  { title: "City"         , type: 'string', data: "city" },
+  { title: "State"        , type: 'string', data: "state" },
+  { title: "Zip Code"     , type: 'string', data: "zipCode" },
 ];
 
 /**
@@ -42,11 +42,6 @@ export const EmployeeList = () => {
   // When the number of items per page change
   const onNbItemsChange = (event) => {
     setNbPerPage(parseInt(event.target.value));
-  };
-
-  // When the page number change
-  const onPageChange = (page) => {
-    setCurPage(page);
   };
 
   // In order to apply all changes (search or page or number of items per page)
@@ -109,7 +104,7 @@ export const EmployeeList = () => {
           nbItems={findData.length}
           nbPerPage={nbPerPage}
           curPage={curPage}
-          onPageChange={onPageChange}
+          onPageChange={(p) => setCurPage(p)}
         />
         <Link className="link-button" to="/">
           Back to Home
