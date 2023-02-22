@@ -5,11 +5,12 @@ import { Link } from "react-router-dom";
 import { Card, Container } from "../../components/Container";
 import { FieldSet, Form } from "../../components/Form";
 import { Button } from "../../components/Form/Button";
-import { InputDate } from "../../components/Form/InputDate";
 import { InputNumber } from "../../components/Form/InputNumber";
 import { InputSelect } from "../../components/Form/InputSelect";
 import { InputText } from "../../components/Form/InputText";
 import { Modal } from "../../components/Modal";
+
+import { InputDate } from "react-date-modify"
 
 import { addEmployee } from "../../Services/Redux/Slices/dataSlice";
 
