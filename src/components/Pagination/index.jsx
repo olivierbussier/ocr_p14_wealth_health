@@ -1,5 +1,12 @@
+import PropTypes, { func } from "prop-types";
 import "./style.scss";
 
+/**
+ *  Buton used in Pagination component
+ *
+ * @param {*} param0
+ * @returns
+ */
 const Button = ({
   id,
   onClick,
@@ -19,7 +26,26 @@ const Button = ({
     </button>
   );
 };
+Button.propTypes = {
+  id: PropTypes.number,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  active: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string
+}
 
+/**
+ * Simple component Pagination could be used in conjonction with
+ * DataTable component
+ *
+ * @param {object} props
+ * @param {number} props.nbItems Total number of items to be displayed
+ * @param {number} props.nbPerPage Number of items to display on one page
+ * @param {number} props.curPage Current active page
+ * @param {function} props.onPageChange callable hook to handle page change (parameter : requested page)
+ * @returns {JSX.Element}
+ */
 export const Pagination = ({ nbItems, nbPerPage, curPage, onPageChange }) => {
   let res = [];
   const nbPages = Math.ceil(nbItems / nbPerPage);
@@ -61,3 +87,9 @@ export const Pagination = ({ nbItems, nbPerPage, curPage, onPageChange }) => {
 
   return <div className="app-pagination">{res}</div>;
 };
+Pagination.propTypes = {
+  nbItems: PropTypes.number,
+  nbPerPage: PropTypes.number,
+  curPage: PropTypes.number,
+  onClick: PropTypes.func
+}

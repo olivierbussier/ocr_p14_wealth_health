@@ -1,13 +1,14 @@
 import { Card, Container } from "../../components/Container";
 import { useSelector } from "react-redux";
-
-import "./style.scss";
-import { DataTable } from "../../components/DataTable";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+
+import { DataTable, Pagination } from "react-data-table-modify";
+
 import { InputText } from "../../components/Form/InputText";
 import { InputSelect } from "../../components/Form/InputSelect";
-import { Pagination } from "../../components/Pagination";
+
+import "./style.scss";
 
 const formatCols = [
   { title: "First Name"   , type: 'string', data: "firstName" },
