@@ -16,18 +16,3 @@
     gap: 5px;
 }
 
-.link-button {
-    height: 100%;
-    border: 1px lightgray solid;
-    padding: 0.25em;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 1em;
-    &:hover {
-        background-color: #ddd;
-    }
-    &:visited {
-        text-decoration: none;
-        color:#666;
-    }
-}

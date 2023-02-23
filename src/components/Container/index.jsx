@@ -13,6 +13,6 @@ export const Container = ({ children }) => {
 
 export const Card = ({max, children}) => {
   return (
-    <div className="card" style={{maxWidth: max}}>{children}</div>
+    <div className="card">{children}</div>
   )
 }

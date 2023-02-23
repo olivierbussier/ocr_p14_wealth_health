@@ -115,7 +115,7 @@ export const Home = () => {
                 { name: "Legal", value: "Legal" },
               ]}
             />
-            <Button text="Save" />
+            <Button className="link-button" text="Save" />
           </Form>
         </Card>
       </Container>
