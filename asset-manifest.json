@@ -2,8 +2,8 @@
   "files": {
     "main.css": "./static/css/main.31908fef.css",
     "main.js": "./static/js/main.bd2b0c53.js",
-    "static/media/close-icon.svg": "./static/media/close-icon.069e609eeee92c475a22.svg",
     "index.html": "./index.html",
+    "static/media/close-icon.svg": "./static/media/close-icon.069e609eeee92c475a22.svg",
     "main.31908fef.css.map": "./static/css/main.31908fef.css.map",
     "main.bd2b0c53.js.map": "./static/js/main.bd2b0c53.js.map"
   },
