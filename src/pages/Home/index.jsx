@@ -81,7 +81,7 @@ export const Home = () => {
           message="Employee Created with success!"
           onClose={() => setModalIsOpen(false)}
         />
-        <Card>
+        <Card maxWidth={550}>
           <header className="center">
             <Link className="link-button" to="/employee-list">
               View Current Employees
