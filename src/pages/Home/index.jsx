@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch } from "react-redux";
+
 import { Link } from "react-router-dom";
 
 import { Card, Container } from "../../components/Container";
@@ -46,7 +47,7 @@ const SubTitle = ({ children }) => {
  */
 export const Home = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch;
 
   const handleSubmit = (event) => {
     event.preventDefault();
